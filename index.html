@@ -1,60 +1,114 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Jeu Ascenseur</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 380px;
+      background: #111827;
+      padding: 25px;
+      border-radius: 22px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #cbd5e1;
+    }
+
+    button, input {
+      width: 100%;
+      padding: 16px;
+      margin-top: 12px;
+      font-size: 18px;
+      border-radius: 14px;
+      border: none;
     }
 
     button {
-      padding: 15px 20px;
-      margin: 10px;
-      font-size: 18px;
-      border-radius: 10px;
-      border: none;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    .create {
-      background: #22c55e;
+    input {
+      text-align: center;
+      text-transform: uppercase;
     }
 
-    .join {
-      background: #3b82f6;
+    .create { background: #22c55e; }
+    .join { background: #3b82f6; color: white; }
+
+    .code {
+      margin-top: 18px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #facc15;
+    }
+
+    .small {
+      font-size: 14px;
+      margin-top: 18px;
+      color: #94a3b8;
     }
   </style>
 </head>
 
 <body>
-
-  <div>
+  <div class="card">
     <h1>Jeu Ascenseur</h1>
+    <p>Crée ou rejoins une partie avec un code.</p>
 
     <button class="create" onclick="createGame()">Créer une partie</button>
-    <br>
-    <button class="join">Rejoindre une partie</button>
 
-    <p id="code"></p>
+    <div class="code" id="gameCode"></div>
+
+    <input id="joinCode" placeholder="Entrer un code" maxlength="5" />
+
+    <button class="join" onclick="joinGame()">Rejoindre une partie</button>
+
+    <p class="small" id="message">Version test — multijoueur pas encore connecté.</p>
   </div>
 
   <script>
     function createGame() {
       const code = Math.random().toString(36).substring(2, 7).toUpperCase();
-      document.getElementById("code").innerText = "Code : " + code;
+      document.getElementById("gameCode").innerText = "Code : " + code;
+      document.getElementById("message").innerText = "Partie créée. Donne ce code aux joueurs.";
+    }
+
+    function joinGame() {
+      const code = document.getElementById("joinCode").value.toUpperCase();
+
+      if (code.length < 5) {
+        document.getElementById("message").innerText = "Entre un code de 5 caractères.";
+        return;
+      }
+
+      document.getElementById("message").innerText = "Tu rejoins la partie : " + code;
     }
   </script>
-
 </body>
 </html>
