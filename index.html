@@ -94,6 +94,8 @@
 
   <script>
     function createGame() {
+  alert("Nouvelle partie solo lancée !");
+    }
       const code = Math.random().toString(36).substring(2, 7).toUpperCase();
       document.getElementById("gameCode").innerText = "Code : " + code;
       document.getElementById("message").innerText = "Partie créée. Donne ce code aux joueurs.";
