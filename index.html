@@ -94,22 +94,17 @@
 
   <script>
     function createGame() {
-  alert("Nouvelle partie solo lancée !");
-    }
-      const code = Math.random().toString(36).substring(2, 7).toUpperCase();
-      document.getElementById("gameCode").innerText = "Code : " + code;
-      document.getElementById("message").innerText = "Partie créée. Donne ce code aux joueurs.";
-    }
+  document.body.innerHTML = `
+    <div style="color:white; text-align:center;">
+      <h1>Partie Solo</h1>
+      <p>Le jeu va commencer...</p>
+      <button onclick="startGame()">Commencer</button>
+    </div>
+  `;
+}
 
-    function joinGame() {
-      const code = document.getElementById("joinCode").value.toUpperCase();
-
-      if (code.length < 5) {
-        document.getElementById("message").innerText = "Entre un code de 5 caractères.";
-        return;
-      }
-
-      document.getElementById("message").innerText = "Tu rejoins la partie : " + code;
+function startGame() {
+  alert("Début du jeu !");
     }
   </script>
 </body>
