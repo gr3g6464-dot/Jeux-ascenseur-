@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title>Jeu Ascenseur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
       display: flex;
@@ -16,34 +17,44 @@
       height: 100vh;
       text-align: center;
     }
+
     button {
-      padding: 15px;
+      padding: 15px 20px;
       margin: 10px;
       font-size: 18px;
       border-radius: 10px;
       border: none;
+      cursor: pointer;
     }
-    .create { background: green; }
-    .join { background: blue; }
+
+    .create {
+      background: #22c55e;
+    }
+
+    .join {
+      background: #3b82f6;
+    }
   </style>
 </head>
 
 <body>
 
-<h1>Jeu Ascenseur</h1>
+  <div>
+    <h1>Jeu Ascenseur</h1>
 
-<button class="create" onclick="createGame()">Créer une partie</button>
-<br>
-<button class="join">Rejoindre une partie</button>
+    <button class="create" onclick="createGame()">Créer une partie</button>
+    <br>
+    <button class="join">Rejoindre une partie</button>
 
-<p id="code"></p>
+    <p id="code"></p>
+  </div>
 
-<script>
-function createGame() {
-  const code = Math.random().toString(36).substring(2, 7).toUpperCase();
-  document.getElementById("code").innerText = "Code : " + code;
-}
-</script>
+  <script>
+    function createGame() {
+      const code = Math.random().toString(36).substring(2, 7).toUpperCase();
+      document.getElementById("code").innerText = "Code : " + code;
+    }
+  </script>
 
 </body>
 </html>
